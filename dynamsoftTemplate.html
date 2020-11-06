@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="div-video-container">
+    <video class="dbrScanner-video" playsinline="true"></video>
+
+    <select class="dbrScanner-sel-resolution">
+        <option class="dbrScanner-opt-gotResolution" value="got"></option>
+        <option data-width="1920" data-height="1080">1920 x 1080</option>
+        <option data-width="1280" data-height="720">1280 x 720</option>
+        <option data-width="640" data-height="480">640 x 480</option>
+    </select>
+</div>
+<!-- Please visit https://www.dynamsoft.com/customer/license/trialLicense to get a trial license. -->
+<script src="https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@7.6.0/dist/dbr.js" data-productKeys="t0077xQAAAIUl0DUUtXS6Tju2/i9XV05lqvc7QJ8wiDAl1baw0ouY4DLYfuc8iSNDSG8w8W7cOh2Qila1tdIsDmz7a8GykKlYd7faHmzmKnY="></script>
+<script>
+    let scanner = null;
+    (async()=>{
+        scanner = await Dynamsoft.BarcodeScanner.createInstance();
+        scanner.onFrameRead = results => {console.log(results);};
+        scanner.onUnduplicatedRead = (txt, result) => {alert(txt);};
+        await scanner.show();
+    })();
+</script>
+</body>
+</html>
